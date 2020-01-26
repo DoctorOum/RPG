@@ -26,6 +26,7 @@ ExportedObj/
 *.info
 *.dll
 *.json
+*.dwlt
 
 
 # Unity3D generated meta files
@@ -38,4 +39,3 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
-*.json
