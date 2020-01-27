@@ -16,8 +16,10 @@ public class DamageManager : MonoBehaviour
         
     }
 
-    public void Damage(float Power, float Attack, float Defense)
+    public int Damage(int Power, int Attack, int Defense)
     {
-        float damage = Power * ((Attack / Defense) - (Attack % Defense));
+        //if player attacking; Attack = player attack, Defense = enemy defense
+        int damage = Power * ((Attack / Defense) - (Attack % Defense));
+        return damage;
     }
 }
