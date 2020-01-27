@@ -4,22 +4,15 @@ using UnityEngine;
 
 public class DamageManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public int Damage(int Power, int Attack, int Defense)
     {
         //if player attacking; Attack = player attack, Defense = enemy defense
-        int damage = Power * ((Attack / Defense) - (Attack % Defense));
-        return damage;
+        int damage = Power * (Attack - Defense);
+        return (damage < 0 ? 0 : damage);
+    }
+    public int remainingHealth(int currentHealth, int damage)
+    {
+        int health = currentHealth - damage;
+        return health;
     }
 }

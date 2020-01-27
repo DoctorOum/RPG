@@ -837,7 +837,9 @@ MonoBehaviour:
   Power: 2
   Attack: 3
   Defense: 8
+  playerCurrentHealth: 0
   maxHealth: 10
+  damageManager: {fileID: 105506992}
 --- !u!1 &2072895236
 GameObject:
   m_ObjectHideFlags: 0
@@ -870,8 +872,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Power: 2
   Attack: 3
-  Defense: 4
+  Defense: 2
+  enemyCurrentHealth: 1
   maxHealth: 10
+  damageManager: {fileID: 105506992}
 --- !u!212 &2072895238
 SpriteRenderer:
   m_ObjectHideFlags: 0

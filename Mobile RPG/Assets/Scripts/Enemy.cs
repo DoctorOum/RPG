@@ -11,17 +11,17 @@ public class Enemy : MonoBehaviour
     public int enemyCurrentHealth;
     public int maxHealth;
 
-    DamageManager damageManager;
+    public DamageManager damageManager;
     PlayerScript Player;
-    HealthManager Health;
+    //HealthManager Health;
     // Start is called before the first frame update
     void Start()
     {
         enemyCurrentHealth = maxHealth;
 
-        damageManager = GetComponent<DamageManager>();
+        //damageManager = GetComponent<DamageManager>();
         Player = GetComponent<PlayerScript>();
-        Health = GetComponent<HealthManager>();
+        //Health = GetComponent<HealthManager>();
     }
 
     // Update is called once per frame
