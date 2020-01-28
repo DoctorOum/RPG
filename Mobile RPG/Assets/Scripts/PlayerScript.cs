@@ -29,7 +29,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (playerCurrentHealth <= 0) Destroy(gameObject);
 
-        if (CrossPlatformInputManager.GetButtonDown("Attack enemy"))
+        if (CrossPlatformInputManager.GetButtonDown("Attack"))
         {
             Debug.Log(enemy.Length);
             int damage = damageManager.Damage(Power, Attack, enemy[0].Defense);
