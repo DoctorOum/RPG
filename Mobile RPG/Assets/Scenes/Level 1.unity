@@ -130,7 +130,6 @@ GameObject:
   m_Component:
   - component: {fileID: 105506993}
   - component: {fileID: 105506992}
-  - component: {fileID: 105506991}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -138,18 +137,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &105506991
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 105506990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 615f8cd6789877d4ca1c9adabb869142, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &105506992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,7 +338,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -641, y: -1035}
+  m_AnchoredPosition: {x: -641, y: -975}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &314570518
@@ -837,8 +824,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Power: 2
-  Attack: 3
-  Defense: 8
+  Attack: 6
+  Defense: 4
   playerCurrentHealth: 0
   maxHealth: 10
   damageManager: {fileID: 105506992}
@@ -880,7 +867,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2, y: -1035}
+  m_AnchoredPosition: {x: -2, y: -975}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &989521534
@@ -1222,7 +1209,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 632, y: -1035}
+  m_AnchoredPosition: {x: 632, y: -975}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1741391087
@@ -1395,12 +1382,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2072895236}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8c4949016df3bf4fb2f39d373176904, type: 3}
+  m_Script: {fileID: 11500000, guid: 3b6e3547fe67a2c4da61357d1146ffe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Power: 2
   Attack: 3
-  Defense: 2
+  Defense: 6
   enemyCurrentHealth: 1
   maxHealth: 10
   damageManager: {fileID: 105506992}
