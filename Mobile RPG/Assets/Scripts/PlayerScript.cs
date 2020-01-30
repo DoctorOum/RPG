@@ -6,7 +6,7 @@ using UnityStandardAssets.CrossPlatformInput;
 public class PlayerScript : MonoBehaviour
 {
 
-    public int Power = 2;
+    public float Power = 2;
     public int Attack;
     public int Defense;
 

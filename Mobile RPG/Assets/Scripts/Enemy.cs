@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int Power = 2;
+    public float Power = 2;
     public int Attack;
     public int Defense;
 

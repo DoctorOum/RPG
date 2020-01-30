@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class DamageManager : MonoBehaviour
 {
-    public int Damage(int Power, int Attack, int Defense)
+    public int Damage(float Power, int Attack, int Defense)
     {
         //if player attacking; Attack = player attack, Defense = enemy defense
-        int damage = Power * (Attack - Defense);
-        return (damage < 0 ? 0 : damage);
+        int damage = (int)(Power * (Attack / Defense));
+        return (damage < 0 ? 0 : damage); //returns zero if damage is negative
     }
     public int remainingHealth(int currentHealth, int damage)
     {
