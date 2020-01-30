@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public Canvas battleSystem;
     public Canvas selectEnemy;
+
     // Start is called before the first frame update
     void Awake()
     {
