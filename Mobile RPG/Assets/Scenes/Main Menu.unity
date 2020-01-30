@@ -130,7 +130,7 @@ PrefabInstance:
     - target: {fileID: 1333411596992586042, guid: 3ee42356f00d11a4aace07053e22215c,
         type: 3}
       propertyPath: m_Name
-      value: Credit Loader (1)
+      value: Credit Loader
       objectReference: {fileID: 0}
     - target: {fileID: 1333411596992585988, guid: 3ee42356f00d11a4aace07053e22215c,
         type: 3}
