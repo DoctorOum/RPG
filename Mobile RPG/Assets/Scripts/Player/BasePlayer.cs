@@ -14,6 +14,7 @@ public class BasePlayer
     public float Accuracy;
     public float CritChance;
 
+
     //counter till they can use their Special
     public float Special;
 
@@ -39,4 +40,5 @@ public class BasePlayer
 
     public Type EnemyType;
     //
+
 }
