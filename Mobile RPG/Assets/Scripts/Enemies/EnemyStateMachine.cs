@@ -6,6 +6,10 @@ public class EnemyStateMachine : MonoBehaviour
 {
     public BaseEnemy Enemy;
 
+    public DamageManager damageManager;
+
+    public bool blocking;
+
     float randomval = Random.value;
 
     public enum TurnState
@@ -24,7 +28,8 @@ public class EnemyStateMachine : MonoBehaviour
     void Start()
     {
         currState = TurnState.WAITING;
-        
+        blocking = false;
+
     }
 
     // Update is called once per frame
@@ -41,7 +46,7 @@ public class EnemyStateMachine : MonoBehaviour
                 break;
 
             case (TurnState.ATTACK):
-
+                Attacking(2.0f);
                 break;
 
             case (TurnState.BLOCK):
@@ -49,11 +54,11 @@ public class EnemyStateMachine : MonoBehaviour
                 break;
 
             case (TurnState.SPECIAL):
-
+                Attacking(3.0f);
                 break;
 
             case (TurnState.ULTIMATE):
-
+                Attacking(5.0f);
                 break;
 
             case (TurnState.DEAD):
@@ -68,9 +73,14 @@ public class EnemyStateMachine : MonoBehaviour
     //TODO make it easier for designers to adjust the value probability the enem selects attack, block, spelial or ultimate
     void SelectingAttack()
     {
-        if(Enemy.TierLvl == 1)
+        if (blocking)
         {
-            //tier 1 enemies only can attack and defend
+            Enemy.Defense = Enemy.Defense / 1.5f;
+            blocking = false;
+        }
+        if(Enemy.TierLvl == 1)      //tier 1 enemies only can attack and defend
+        {
+            
             if (randomval <= .5)
             {
 
@@ -83,13 +93,13 @@ public class EnemyStateMachine : MonoBehaviour
             }
         }
 
-        if (Enemy.TierLvl == 2)
+        if (Enemy.TierLvl == 2)     //tier 2 enemies can attack, defend and Special
         {
-            //tier 2 enemies can attack, defend and Special
-            //if enemy energy above half they now have a 20% chance to use their special
-            if(Enemy.CurrEnegy >= 50)
+            
+           
+            if(Enemy.CurrEnegy >= 50)       //if enemy energy above half they now have a 20% chance to use their special
             {
-                if (randomval <= .4)
+                if (randomval <= .2)
                 {
                     currState = TurnState.ATTACK;
                 }
@@ -97,7 +107,7 @@ public class EnemyStateMachine : MonoBehaviour
                 {
                     currState = TurnState.BLOCK;
                 }
-                if (randomval <= .2)
+                if (randomval <= .4)
                 {
                     currState = TurnState.SPECIAL;
                 }
@@ -115,11 +125,11 @@ public class EnemyStateMachine : MonoBehaviour
             }
             
         }
-        if (Enemy.TierLvl == 3)
+        if (Enemy.TierLvl == 3)     //tier 3 enemies only can attack, defend, special and Ultimate
         {
-            //tier 3 enemies only can attack, defend, special and Ultimate
-            //if enemy energy above half they now have a 20% chance to use their special
-            if (Enemy.CurrEnegy >= 50)
+            
+            
+            if (Enemy.CurrEnegy >= 50)      //if enemy energy above half they now have a 20% chance to use their special
             {
                 if (randomval <= .4)
                 {
@@ -140,22 +150,22 @@ public class EnemyStateMachine : MonoBehaviour
             //if enemy energy at full they have a 20% chance to use their special or ultimate
             if (Enemy.CurrEnegy >= 100)
             {
-                if (randomval <= .35)
+                if (randomval <= .15)
                 {
 
                     currState = TurnState.ATTACK;
                 }
-                if (randomval > .35)
+                if (randomval > .15)
                 {
 
                     currState = TurnState.BLOCK;
                 }
-                if (randomval <= .15)
+                if (randomval <= .25)
                 {
                     Enemy.CurrEnegy = Enemy.CurrEnegy - 50;
                     currState = TurnState.SPECIAL;
                 }
-                if (randomval <= .15)
+                if (randomval <= .45)
                 {
                     Enemy.CurrEnegy = Enemy.CurrEnegy - 100;
                     currState = TurnState.ULTIMATE;
@@ -166,24 +176,17 @@ public class EnemyStateMachine : MonoBehaviour
         }
 
     }
-    //TODO allow enemy to attack which ever player it chooses based on its preferance. ie low health target, high health, top to bottom...
-    void Attacking()
-    {
 
+    //TODO allow enemy to attack which ever player it chooses based on its preferance. ie low health target, high health, top to bottom...
+    void Attacking(float Power)
+    {
+        damageManager.Damage(Power, Enemy.Attack, Enemy.Defense);
     }
 
     void Defending()
     {
-        //buff defense for 1 round
-    }
-
-    void SpecialAttack()
-    {
-
-    }
-
-    void UltimateAttack()
-    {
+        blocking = true;
+        Enemy.Defense = Enemy.Defense * 1.5f;        //buff defense for 1 round
 
     }
 
