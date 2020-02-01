@@ -13,18 +13,14 @@ public class Enemy : MonoBehaviour
 
     public DamageManager damageManager;
     PlayerScript Player;
-    //HealthManager Health;
-    // Start is called before the first frame update
+
     void Start()
     {
         enemyCurrentHealth = maxHealth;
-
-        //damageManager = GetComponent<DamageManager>();
         Player = GetComponent<PlayerScript>();
-        //Health = GetComponent<HealthManager>();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if (enemyCurrentHealth <= 0) Destroy(gameObject);

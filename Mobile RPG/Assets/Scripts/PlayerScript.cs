@@ -6,6 +6,7 @@ using UnityStandardAssets.CrossPlatformInput;
 public class PlayerScript : MonoBehaviour
 {
     bool choosingEnemy;
+    bool playersTurn;
 
     public float Power = 2;
     public int Attack;
@@ -32,6 +33,7 @@ public class PlayerScript : MonoBehaviour
 
     void Start()
     {
+        playersTurn = true;
         choosingEnemy = false;
         playerCurrentHealth = maxHealth;
         //enemy = GameObject.FindObjectsOfType<Enemy>();
@@ -42,57 +44,83 @@ public class PlayerScript : MonoBehaviour
     {
         if (playerCurrentHealth <= 0) Destroy(gameObject);
 
-        if (CrossPlatformInputManager.GetButtonDown("Attack")) //Attacking, selecting enemy now
+        if (playersTurn)
         {
-            Debug.Log("There are " + enemy.Length + "Enemies!");
+            if (CrossPlatformInputManager.GetButtonDown("Attack")) //Attack selected
+            {
+                chooseEnemy();
+            }
 
-            battleSystem.enabled = false;
-            selectEnemy.enabled = true;
-            choosingEnemy = true;
-
-            Debug.Log("Choosing Enemy");
+            if (choosingEnemy)
+            {
+                if (CrossPlatformInputManager.GetButtonDown("Enemy 1"))
+                {
+                    damagingEnemy(0);
+                    Debug.Log("Enemy takes damage ");
+                    Debug.Log(enemy[0]  + "'s health is " + enemy[0].enemyCurrentHealth);
+                }
+                else if (CrossPlatformInputManager.GetButtonDown("Enemy 2"))
+                {
+                    damagingEnemy(1);
+                    Debug.Log("Enemy takes damage ");
+                    Debug.Log(enemy[0] + "'s health is " + enemy[1].enemyCurrentHealth);
+                }
+                else if (CrossPlatformInputManager.GetButtonDown("Enemy 3"))
+                {
+                    damagingEnemy(2); 
+                    Debug.Log("Enemy takes damage ");
+                    Debug.Log(enemy[0] + "'s health is " + enemy[2].enemyCurrentHealth);
+                }
+                else if (CrossPlatformInputManager.GetButtonDown("Go Back"))
+                {
+                    selectEnemy.enabled = false;
+                    battleSystem.enabled = true;
+                    choosingEnemy = false;
+                    Debug.Log("No longer Choosing enemy");
+                }
+            }
         }
-        if (choosingEnemy)
+
+        if (!playersTurn) //enemeies turn
         {
-            if (CrossPlatformInputManager.GetButtonDown("Enemy 1"))
-            {
-                Damaging(0);
-                selectEnemy.enabled = false;
-                battleSystem.enabled = true;
-                choosingEnemy = false;
-                Debug.Log("Enemy takes damage");
-                Debug.Log("Enemy's current health" + enemy[0].enemyCurrentHealth);
-            } else if (CrossPlatformInputManager.GetButtonDown("Enemy 2"))
-            {
-                Damaging(1);
-                selectEnemy.enabled = false;
-                battleSystem.enabled = true;
-                choosingEnemy = false;
-                Debug.Log("Enemy takes damage");
-                Debug.Log("Enemy's current health" + enemy[1].enemyCurrentHealth);
-            }else if (CrossPlatformInputManager.GetButtonDown("Enemy 3"))
-            {
-                Damaging(2);
-                selectEnemy.enabled = false;
-                battleSystem.enabled = true;
-                choosingEnemy = false;
-                Debug.Log("Enemy takes damage");
-                Debug.Log("Enemy's current health" + enemy[2].enemyCurrentHealth);
-            }else if (CrossPlatformInputManager.GetButtonDown("Go Back"))
-            {
-                selectEnemy.enabled = false;
-                battleSystem.enabled = true;
-                choosingEnemy = false;
-            }
-            else { 
-            Debug.Log("No longer Choosing enemy");
-            }
+            selectEnemy.enabled = false;
+            battleSystem.enabled = false;
+
+            damagingPlayer(); //random enemy attacks
+
         }
     }
 
-    public void Damaging(int Enemy)
+    public void damagingEnemy(int Enemy)
     {
         int damage = damageManager.Damage(Power, Attack, enemy[Enemy].Defense);
         enemy[Enemy].enemyCurrentHealth = damageManager.remainingHealth(enemy[Enemy].enemyCurrentHealth, damage);
+
+        // After damage it switches to Enemy's turn
+        selectEnemy.enabled = false;
+        battleSystem.enabled = true;
+        choosingEnemy = false;
+        playersTurn = false;
+    }
+
+    public void damagingPlayer()
+    {
+        int randomEnemy = Random.Range(0, enemy.Length);
+        int damage = damageManager.Damage(enemy[randomEnemy].Power, enemy[randomEnemy].Attack, Defense);
+        playerCurrentHealth = damageManager.remainingHealth(playerCurrentHealth, damage);
+
+        //end enemies turn
+        Debug.Log("You have " + playerCurrentHealth + " health");
+        playersTurn = true;
+        battleSystem.enabled = true;
+    }
+
+    void chooseEnemy()
+    {
+        battleSystem.enabled = false;
+        selectEnemy.enabled = true;
+        choosingEnemy = true;
+
+        Debug.Log("Choosing Enemy");
     }
 }
