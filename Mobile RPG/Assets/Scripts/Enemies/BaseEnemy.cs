@@ -13,6 +13,8 @@ public class BaseEnemy
     public float Defense;
     public float Accuracy;
     public float CritChance;
+    public float MaxEnergy;
+    public float CurrEnegy;
 
     //counter till they can use their Special
     public float Special;
