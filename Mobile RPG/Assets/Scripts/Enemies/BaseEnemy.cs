@@ -9,6 +9,7 @@ public class BaseEnemy
     public string name;
     public float MaxHP;
     public float CurrHP;
+    public float Power;    //multiplies the attack, special or ultimate
     public float Attack;
     public float Defense;
     public float Accuracy;
