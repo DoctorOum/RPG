@@ -5,7 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class BaseEnemy
 {
-    public Sprite Sprite;
     public string name;
     public float MaxHP;
     public float CurrHP;
