@@ -1,10 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerStateMachine : MonoBehaviour
 {
     public BasePlayer player;
+    public BaseEnemy enemy;
+    public GameManager gameManager;
+    public DamageManager damageManager;
+    public BattleManager battleManager;
 
     public enum Turnstate
     {
@@ -22,6 +27,7 @@ public class PlayerStateMachine : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         currentState = Turnstate.WAITING;
         player.CurrHP = player.MaxHP;
     }
@@ -33,14 +39,22 @@ public class PlayerStateMachine : MonoBehaviour
         {
             case (Turnstate.WAITING):
 
-            break;
+               if (player.playersTurn)
+                {
+                    currentState = Turnstate.SELECTING;
+                }
+               else
+                {
+                    gameManager.waiting(); //No UI so enemies can attack
+                }
+                break;
 
             case (Turnstate.SELECTING):
-
-            break;
+                battleSelect(); //Choosing Attack, Special or block
+                break;
 
             case (Turnstate.ATTACK):
-
+                gameManager.selectEnemyOn();
                 break;
 
             case (Turnstate.BLOCK):
@@ -48,19 +62,44 @@ public class PlayerStateMachine : MonoBehaviour
                 break;
 
             case (Turnstate.SPECIAL):
-
+                gameManager.selectEnemyOn();
                 break;
 
             case (Turnstate.ULTIMATE):
-
+                gameManager.selectEnemyOn();
                 break;
+
 
             case (Turnstate.DEAD):
 
                 break;
         }
     }
-    
+
+    void battleSelect()
+    {
+        if (CrossPlatformInputManager.GetButtonDown("Attack"))
+        {
+            currentState = Turnstate.ATTACK;
+        }
+
+        if (CrossPlatformInputManager.GetButtonDown("Special"))
+        {
+            currentState = Turnstate.SPECIAL;
+        }
+
+        if (CrossPlatformInputManager.GetButtonDown("Block"))
+        {
+            currentState = Turnstate.BLOCK;
+        }
+    }
+
+    public void damagingEnemy(int chooseEnemy)
+    {
+        battleManager.Wave1[chooseEnemy] = gameObject.GetComponent.enemy;
+        float damage = damageManager.Damage(player.Power, player.Attack, battleManager.Wave1[0].);
+        damageManager.remainingHealth();
+    }
 
 
 }
