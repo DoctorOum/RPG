@@ -8,6 +8,7 @@ public class BasePlayer
     public string name;
     public float MaxHP;
     public float CurrHP;
+    public float Power;
     public float Attack;
     public float Defense;
     public float Accuracy;

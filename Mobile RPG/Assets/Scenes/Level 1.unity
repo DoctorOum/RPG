@@ -376,7 +376,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Players: []
-  Wave1: []
+  Wave1:
+  - {fileID: 2072895236}
+  - {fileID: 883332129}
+  - {fileID: 2081591072}
   Wave2: []
   Wave3: []
   BossWave: []
@@ -1279,7 +1282,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player:
-    Sprite: {fileID: 21300000, guid: c95b61ed050def244a902911355c3716, type: 3}
     name: Ray
     MaxHP: 10
     CurrHP: 0
@@ -1287,10 +1289,29 @@ MonoBehaviour:
     Defense: 1
     Accuracy: 1
     CritChance: 1
+    playersTurn: 1
     Special: 1
     Ultimate: 1
     TierLvl: 1
     EnemyType: 0
+  enemy:
+    Sprite: {fileID: 0}
+    name: 
+    MaxHP: 0
+    CurrHP: 0
+    Power: 0
+    Attack: 0
+    Defense: 0
+    Accuracy: 0
+    CritChance: 0
+    MaxEnergy: 0
+    CurrEnegy: 0
+    Special: 0
+    Ultimate: 0
+    TierLvl: 0
+    EnemyType: 0
+  gameManager: {fileID: 105506991}
+  damageManager: {fileID: 105506992}
   currentState: 0
 --- !u!1 &988651554
 GameObject:
@@ -2812,7 +2833,7 @@ MonoBehaviour:
     Sprite: {fileID: 0}
     name: Goblin
     MaxHP: 1
-    CurrHP: 0
+    CurrHP: 1
     Power: 1
     Attack: 1
     Defense: 1
