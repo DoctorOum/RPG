@@ -5,14 +5,15 @@ using UnityEngine;
 [System.Serializable]
 public class BasePlayer
 {
-    public Sprite Sprite;
     public string name;
     public float MaxHP;
     public float CurrHP;
+    public float Power;
     public float Attack;
     public float Defense;
     public float Accuracy;
     public float CritChance;
+    public bool playersTurn = true;
 
 
     //counter till they can use their Special

@@ -315,6 +315,7 @@ GameObject:
   - component: {fileID: 105506993}
   - component: {fileID: 105506992}
   - component: {fileID: 105506991}
+  - component: {fileID: 105506994}
   m_Layer: 0
   m_Name: Game/DamageManager
   m_TagString: Untagged
@@ -362,6 +363,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &105506994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 105506990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f6755afabc8b1b4f9ee4ab06279fdfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Players: []
+  Wave1:
+  - {fileID: 2072895236}
+  - {fileID: 883332129}
+  - {fileID: 2081591072}
+  Wave2: []
+  Wave3: []
+  BossWave: []
+  WholeCombat: []
+  CurrentRound: []
 --- !u!1 &242562097
 GameObject:
   m_ObjectHideFlags: 0
@@ -1000,15 +1023,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 883332129}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52d9b9b6979f0f548b8806fb50991d06, type: 3}
+  m_Script: {fileID: 11500000, guid: b1a25bf3d2487f645872ddcb7aea217b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Power: 2
-  Attack: 4
-  Defense: 3
-  enemyCurrentHealth: 1
-  maxHealth: 10
+  Enemy:
+    Sprite: {fileID: 0}
+    name: 
+    MaxHP: 1
+    CurrHP: 1
+    Power: 1
+    Attack: 1
+    Defense: 1
+    Accuracy: 1
+    CritChance: 1
+    MaxEnergy: 1
+    CurrEnegy: 1
+    Special: 1
+    Ultimate: 1
+    TierLvl: 1
+    EnemyType: 0
   damageManager: {fileID: 105506992}
+  blocking: 0
+  currState: 0
 --- !u!212 &883332131
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1242,21 +1278,41 @@ MonoBehaviour:
   m_GameObject: {fileID: 980850894}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52196c5632ae1d745bbc2c776e9d839c, type: 3}
+  m_Script: {fileID: 11500000, guid: 85793f7bfb8e14048970118f8b6879da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Power: 2
-  Attack: 6
-  Defense: 4
-  playerCurrentHealth: 0
-  maxHealth: 10
-  damageManager: {fileID: 105506992}
+  player:
+    name: Ray
+    MaxHP: 10
+    CurrHP: 0
+    Attack: 2
+    Defense: 1
+    Accuracy: 1
+    CritChance: 1
+    playersTurn: 1
+    Special: 1
+    Ultimate: 1
+    TierLvl: 1
+    EnemyType: 0
   enemy:
-  - {fileID: 2072895237}
-  - {fileID: 883332130}
-  - {fileID: 2081591073}
-  battleSystem: {fileID: 622998776}
-  selectEnemy: {fileID: 450697366}
+    Sprite: {fileID: 0}
+    name: 
+    MaxHP: 0
+    CurrHP: 0
+    Power: 0
+    Attack: 0
+    Defense: 0
+    Accuracy: 0
+    CritChance: 0
+    MaxEnergy: 0
+    CurrEnegy: 0
+    Special: 0
+    Ultimate: 0
+    TierLvl: 0
+    EnemyType: 0
+  gameManager: {fileID: 105506991}
+  damageManager: {fileID: 105506992}
+  currentState: 0
 --- !u!1 &988651554
 GameObject:
   m_ObjectHideFlags: 0
@@ -2300,7 +2356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85bf3be603548374ca46f521a3aa7fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Attack enemy
+  Name: Block
 --- !u!114 &1741391089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2770,15 +2826,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 2072895236}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52d9b9b6979f0f548b8806fb50991d06, type: 3}
+  m_Script: {fileID: 11500000, guid: b1a25bf3d2487f645872ddcb7aea217b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Power: 2
-  Attack: 5
-  Defense: 4
-  enemyCurrentHealth: 1
-  maxHealth: 10
+  Enemy:
+    Sprite: {fileID: 0}
+    name: Goblin
+    MaxHP: 1
+    CurrHP: 1
+    Power: 1
+    Attack: 1
+    Defense: 1
+    Accuracy: 1
+    CritChance: 1
+    MaxEnergy: 1
+    CurrEnegy: 1
+    Special: 1
+    Ultimate: 1
+    TierLvl: 1
+    EnemyType: 0
   damageManager: {fileID: 105506992}
+  blocking: 0
+  currState: 0
 --- !u!212 &2072895238
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2869,15 +2938,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 2081591072}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52d9b9b6979f0f548b8806fb50991d06, type: 3}
+  m_Script: {fileID: 11500000, guid: b1a25bf3d2487f645872ddcb7aea217b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Power: 2
-  Attack: 4
-  Defense: 3
-  enemyCurrentHealth: 1
-  maxHealth: 10
+  Enemy:
+    Sprite: {fileID: 0}
+    name: 
+    MaxHP: 1
+    CurrHP: 1
+    Power: 1
+    Attack: 1
+    Defense: 1
+    Accuracy: 1
+    CritChance: 1
+    MaxEnergy: 1
+    CurrEnegy: 1
+    Special: 1
+    Ultimate: 1
+    TierLvl: 1
+    EnemyType: 0
   damageManager: {fileID: 105506992}
+  blocking: 0
+  currState: 0
 --- !u!212 &2081591074
 SpriteRenderer:
   m_ObjectHideFlags: 0

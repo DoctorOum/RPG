@@ -21,4 +21,21 @@ public class GameManager : MonoBehaviour
     {
         
     }
+    public void waiting()
+    {
+        battleSystem.enabled = false;
+        selectEnemy.enabled = false;
+    }
+
+    public void selectEnemyOn()
+    {
+        battleSystem.enabled = false;
+        selectEnemy.enabled = true;
+    }
+
+    public void battleSystemOn()
+    {
+        battleSystem.enabled = true;
+        selectEnemy.enabled = false;
+    }
 }

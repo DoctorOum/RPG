@@ -10,7 +10,7 @@ public class EnemyStateMachine : MonoBehaviour
 
     public bool blocking;
 
-    float randomval = Random.value;
+    float randomval;
 
     public enum TurnState
     {
@@ -27,6 +27,7 @@ public class EnemyStateMachine : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        randomval = Random.value;
         currState = TurnState.WAITING;
         blocking = false;
 
