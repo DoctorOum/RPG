@@ -239,7 +239,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -250,7 +250,7 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 21300000, guid: fa4dbe030124f7d439e5be0fd67c039f, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -286,8 +286,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 22e8bcd9cfcef274889a196e80a062f2, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -335,8 +335,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd91eff946bc123469c243f49c2e551f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  battleSystem: {fileID: 622998776}
-  selectEnemy: {fileID: 450697366}
 --- !u!114 &105506992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,16 +373,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f6755afabc8b1b4f9ee4ab06279fdfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Players: []
-  Wave1:
-  - {fileID: 2072895236}
-  - {fileID: 883332129}
-  - {fileID: 2081591072}
-  Wave2: []
-  Wave3: []
-  BossWave: []
-  WholeCombat: []
-  CurrentRound: []
 --- !u!1 &242562097
 GameObject:
   m_ObjectHideFlags: 0
@@ -1026,25 +1014,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1a25bf3d2487f645872ddcb7aea217b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy:
-    Sprite: {fileID: 0}
-    name: 
-    MaxHP: 1
-    CurrHP: 1
-    Power: 1
-    Attack: 1
-    Defense: 1
-    Accuracy: 1
-    CritChance: 1
-    MaxEnergy: 1
-    CurrEnegy: 1
-    Special: 1
-    Ultimate: 1
-    TierLvl: 1
-    EnemyType: 0
-  damageManager: {fileID: 105506992}
-  blocking: 0
-  currState: 0
 --- !u!212 &883332131
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1243,15 +1212,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c95b61ed050def244a902911355c3716, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a14c2a8d966246c4a9bf7c787811ced9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5.59, y: 7.7}
+  m_Size: {x: 0.32, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &980850896
@@ -1281,38 +1250,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85793f7bfb8e14048970118f8b6879da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player:
-    name: Ray
-    MaxHP: 10
-    CurrHP: 0
-    Attack: 2
-    Defense: 1
-    Accuracy: 1
-    CritChance: 1
-    playersTurn: 1
-    Special: 1
-    Ultimate: 1
-    TierLvl: 1
-    EnemyType: 0
-  enemy:
-    Sprite: {fileID: 0}
-    name: 
-    MaxHP: 0
-    CurrHP: 0
-    Power: 0
-    Attack: 0
-    Defense: 0
-    Accuracy: 0
-    CritChance: 0
-    MaxEnergy: 0
-    CurrEnegy: 0
-    Special: 0
-    Ultimate: 0
-    TierLvl: 0
-    EnemyType: 0
-  gameManager: {fileID: 105506991}
-  damageManager: {fileID: 105506992}
-  currentState: 0
 --- !u!1 &988651554
 GameObject:
   m_ObjectHideFlags: 0
@@ -2037,7 +1974,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -2048,7 +1985,7 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 21300000, guid: fa4dbe030124f7d439e5be0fd67c039f, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -2084,8 +2021,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 22e8bcd9cfcef274889a196e80a062f2, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2829,25 +2766,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1a25bf3d2487f645872ddcb7aea217b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy:
-    Sprite: {fileID: 0}
-    name: Goblin
-    MaxHP: 1
-    CurrHP: 1
-    Power: 1
-    Attack: 1
-    Defense: 1
-    Accuracy: 1
-    CritChance: 1
-    MaxEnergy: 1
-    CurrEnegy: 1
-    Special: 1
-    Ultimate: 1
-    TierLvl: 1
-    EnemyType: 0
-  damageManager: {fileID: 105506992}
-  blocking: 0
-  currState: 0
 --- !u!212 &2072895238
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2941,25 +2859,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1a25bf3d2487f645872ddcb7aea217b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy:
-    Sprite: {fileID: 0}
-    name: 
-    MaxHP: 1
-    CurrHP: 1
-    Power: 1
-    Attack: 1
-    Defense: 1
-    Accuracy: 1
-    CritChance: 1
-    MaxEnergy: 1
-    CurrEnegy: 1
-    Special: 1
-    Ultimate: 1
-    TierLvl: 1
-    EnemyType: 0
-  damageManager: {fileID: 105506992}
-  blocking: 0
-  currState: 0
 --- !u!212 &2081591074
 SpriteRenderer:
   m_ObjectHideFlags: 0
