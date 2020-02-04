@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class LevelLoader : MonoBehaviour
 {
 
-    public string Next_Level;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -18,11 +18,17 @@ public class LevelLoader : MonoBehaviour
     {
         
     }
-    
-
-    public void loadnext()
+    public void MainMenu()
     {
-        SceneManager.LoadScene(Next_Level);
+        SceneManager.LoadScene("Main Menu");
     }
-    
+
+    public void Credits()
+    {
+        SceneManager.LoadScene("Credits");
+    }
+    public void Level1()
+    {
+        SceneManager.LoadScene("Level 1");
+    }
 }
