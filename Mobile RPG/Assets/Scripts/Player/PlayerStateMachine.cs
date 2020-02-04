@@ -94,12 +94,12 @@ public class PlayerStateMachine : MonoBehaviour
         }
     }
 
-    public void damagingEnemy(int chooseEnemy)
-    {
-        battleManager.Wave1[chooseEnemy] = gameObject.GetComponent.enemy; // make a way to get the defesnse of the enemy at the certain point in the list
-        float damage = damageManager.Damage(player.Power, player.Attack, battleManager.Wave1[0].);
-        damageManager.remainingHealth();
-    }
+    //public void damagingEnemy(int chooseEnemy)
+    //{
+        //battleManager.Wave1[chooseEnemy] = gameObject.GetComponent.enemy; // make a way to get the defesnse of the enemy at the certain point in the list
+        //float damage = damageManager.Damage(player.Power, player.Attack, battleManager.Wave1[0].);
+        //damageManager.remainingHealth();
+    //}
 
 
 }
