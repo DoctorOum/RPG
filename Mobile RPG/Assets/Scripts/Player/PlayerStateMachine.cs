@@ -22,57 +22,62 @@ public class PlayerStateMachine : MonoBehaviour
         DEAD
     }
 
-    public Turnstate currentState;
+    public Turnstate currentState, previousState;
 
     // Start is called before the first frame update
     void Start()
     {
         
         currentState = Turnstate.WAITING;
+        previousState = Turnstate.DEAD;
         player.CurrHP = player.MaxHP;
     }
 
     // Update is called once per frame
     void Update()
     {
-        switch(currentState)
+        if (currentState != previousState)
         {
-            case (Turnstate.WAITING):
+            switch (currentState)
+            {
+                case (Turnstate.WAITING):
 
-               if (player.playersTurn)
-                {
-                    currentState = Turnstate.SELECTING;
-                }
-               else
-                {
-                    gameManager.waiting(); //No UI so enemies can attack
-                }
-                break;
+                    if (player.playersTurn)
+                    {
+                        currentState = Turnstate.SELECTING;
+                    }
+                    else
+                    {
+                        gameManager.waiting(); //No UI so enemies can attack
+                    }
+                    break;
 
-            case (Turnstate.SELECTING):
-                battleSelect(); //Choosing Attack, Special or block
-                break;
+                case (Turnstate.SELECTING):
+                    battleSelect(); //Choosing Attack, Special or block
+                    break;
 
-            case (Turnstate.ATTACK):
-                gameManager.selectEnemyOn();
-                break;
+                case (Turnstate.ATTACK):
+                    gameManager.selectEnemyOn();
+                    break;
 
-            case (Turnstate.BLOCK):
+                case (Turnstate.BLOCK):
 
-                break;
+                    break;
 
-            case (Turnstate.SPECIAL):
-                gameManager.selectEnemyOn();
-                break;
+                case (Turnstate.SPECIAL):
+                    gameManager.selectEnemyOn();
+                    break;
 
-            case (Turnstate.ULTIMATE):
-                gameManager.selectEnemyOn();
-                break;
+                case (Turnstate.ULTIMATE):
+                    gameManager.selectEnemyOn();
+                    break;
 
 
-            case (Turnstate.DEAD):
+                case (Turnstate.DEAD):
 
-                break;
+                    break;
+            }
+            previousState = currentState;
         }
     }
 
