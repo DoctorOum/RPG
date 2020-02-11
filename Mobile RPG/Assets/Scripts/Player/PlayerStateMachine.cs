@@ -36,8 +36,6 @@ public class PlayerStateMachine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentState != previousState)
-        {
             switch (currentState)
             {
                 case (Turnstate.WAITING):
@@ -77,8 +75,6 @@ public class PlayerStateMachine : MonoBehaviour
 
                     break;
             }
-            previousState = currentState;
-        }
     }
 
     void battleSelect()
